@@ -22,7 +22,7 @@ def main():
         type=float,
         help="Maximum time in seconds for a double press. "
              "Default: 0.35 s.",
-        default=0.5,
+        default=0.3,
     )
     args = parser.parse_args()
 
@@ -33,7 +33,7 @@ def main():
     socket = ctx.socket(zmq.PUB)
     socket.bind(f"tcp://*:{args.port}")
 
-    print("Ready.")
+    print(f"Ready. Publishing on tcp://*:{args.port}")
 
     while True:
         btn.wait_for_release()  # (inverted -> pressed)
